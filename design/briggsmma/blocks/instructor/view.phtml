@@ -1,0 +1,15 @@
+<div class="page-header">
+    <h1>
+        <a href="<?= $this->url('instructor') ?>">Instructors</a> &raquo; <?= $this->clean($item->title) ?> <?= $this->clean($item->name) ?>
+    </h1>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+        <div class="thumbnail"><img alt="<?= $this->clean($item->title . ' ' . $item->name) ?>"
+                                    src="<?= $this->url($item->username . '-tall.jpg', 'image') ?>"/>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <strong><?= $this->clean($item->title) ?> <?= $this->clean($item->name) ?></strong> <?= nl2br($item->bio) ?>
+    </div>
+</div>

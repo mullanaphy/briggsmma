@@ -1,0 +1,125 @@
+<div class="row">
+    <div class="col-sm-8">
+        <?= $welcome ?>
+
+        <h4 class="hidden-xs hidden-sm">Hours:</h4>
+
+        <div class="hidden-xs hidden-sm row">
+            <div class="col-sm-4">
+                <dl>
+                    <dt>Monday</dt>
+                    <dd>
+                        <small>11:00am - 12:30pm</small>
+                    </dd>
+                    <dd>
+                        <small>4:30pm - 9:00pm</small>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-sm-4">
+                <dl>
+                    <dt>Tuesday</dt>
+                    <dd>
+                        <small>4:30pm - 9:00pm</small>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-sm-4">
+                <dl>
+                    <dt>Wednesday</dt>
+                    <dd>
+                        <small>11:00am - 12:30pm</small>
+                    </dd>
+                    <dd>
+                        <small>4:30pm - 9:00pm</small>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-sm-4">
+                <dl>
+                    <dt>Thursday:</dt>
+                    <dd>
+                        <small>4:30pm - 9:00pm</small>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-sm-4">
+                <dl>
+                    <dt>Saturday</dt>
+                    <dd>
+                        <small>11:00am - 12:30pm</small>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <h2>Our Mission</h2>
+
+        <p>We strive to provide a clean, safe, and professional environment for families to learn the most effective
+            martial arts.</p>
+
+        <h4>For Adults:</h4>
+        <ul>
+            <li>Increased awareness</li>
+            <li>Improve body control, movement, and motor skills</li>
+            <li>Shed fat and tone the body</li>
+            <li>Increase flexibility</li>
+            <li>Decrease stress and increase relaxtion</li>
+        </ul>
+
+        <h4>For Children:</h4>
+        <ul>
+            <li>Improve self-discipline</li>
+            <li>Learn self-defense</li>
+            <li>Build self-esteem and confidence</li>
+            <li>Improve focus and decision making</li>
+        </ul>
+    </div>
+</div>
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="<?= $this->url('slide-1.jpg', 'image') ?>" alt="..." class="img-rounded">
+
+            <div class="carousel-caption">
+                Come Train With Us!<br/>
+                <button class="btn btn-lg btn-danger" data-toggle="modal"
+                        data-target="#jumbotron-register">
+                    Sign Up For
+                    Free!
+                </button>
+            </div>
+        </div>
+        <div class="item">
+            <img src="<?= $this->url('slide-2.jpg', 'image') ?>" alt="..." class="img-rounded">
+
+            <div class="carousel-caption">
+                Professor Jesse Briggs working the pads.
+            </div>
+        </div>
+        <div class="item">
+            <img src="<?= $this->url('slide-3.jpg', 'image') ?>" alt="..." class="img-rounded">
+
+            <div class="carousel-caption">
+                Enjoy our large open mats, bags, and cage.
+            </div>
+        </div>
+        <div class="item">
+            <img src="<?= $this->url('slide-4.jpg', 'image') ?>" alt="..." class="img-rounded">
+
+            <div class="carousel-caption">
+                Start now!
+            </div>
+        </div>
+    </div>
+</div>

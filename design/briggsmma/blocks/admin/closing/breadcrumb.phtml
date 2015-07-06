@@ -1,0 +1,8 @@
+<div class="page-header">
+    <h1><a href="<?= $this->url('admin') ?>">Admin
+            Panel</a> &raquo; <?php if (isset($item)): ?><a href="<?= $this->url('admin/closing') ?>">
+                Closings</a> &raquo; <?php if ($item->exists()): ?>Editing <?= $this->clean($item->date) ?><?php else: ?>New Closing<?php endif ?><?php else: ?>Closings
+        <a href="<?= $this->url('admin/closing/id/0') ?>">
+                <small><i class="glyphicon glyphicon-plus-sign"></i></small></a><?php endif ?>
+    </h1>
+</div>

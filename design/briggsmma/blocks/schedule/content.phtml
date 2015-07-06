@@ -1,0 +1,86 @@
+<div class="page-header">
+    <h1>Schedule</h1>
+</div>
+<div class="hidden-xs">
+    <table class="table table-condensed table-striped table-bordered">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($byTimes as $row): ?>
+            <tr>
+                <?php foreach ($row as $col): ?>
+                    <?php if ($col === null || $col === 0): ?>
+                    <?php elseif (is_scalar($col)): ?>
+                        <td><?= $col ?></td>
+                    <?php elseif ($col === false): ?>
+                        <td></td>
+                    <?php else: ?>
+                        <td<?=
+                            ($col['class'])
+                                ? ' class="' . $col['class'] . '"'
+                                : '' ?><?=
+                            ($col['cols'] > 1)
+                                ? ' colspan="' . $col['cols'] . '"'
+                                : '' ?><?=
+                            ($col['rows'] > 1)
+                                ? ' rowspan="' . $col['rows'] . '"'
+                                : '' ?>><?= $col['title'] ?></td>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+    <h4>Class Descriptions</h4>
+    <?php $i = 2 ?>
+    <?php foreach ($descriptions as $class => $description): ?>
+        <?php if (!($i % 2)): ?><div class="row"><?php endif ?>
+        <div class="col-sm-6">
+            <dl>
+                <dt><?= $this->clean($class) ?></dt>
+                <dd><?= $this->clean($description) ?></dd>
+            </dl>
+        </div>
+        <?php if ($i++ % 2): ?></div><?php endif ?>
+    <?php endforeach ?>
+    <?php if (($i % 2)): ?></div><?php endif ?>
+</div>
+<div class="visible-xs">
+    <div class="row">
+        <?php $i = 0; ?>
+        <?php foreach ($byDays as $row): ?>
+        <?php if (++$i % 2): ?>
+    </div>
+    <div class="row">
+        <?php endif ?>
+        <div class="col-sm-6">
+            <div class="thumbnail">
+                <h3><?= $row['day'] ?></h3>
+                <?php foreach ($row['classes'] as $col): ?>
+                    <dl>
+                        <dd<?=
+                            ($col['class'])
+                                ? ' class="' . $col['class'] . '"'
+                                : '' ?>>
+                        <dt><?= $this->clean($col['title']) ?></dt>
+                        <dd><strong><?= $col['start'] ?> - <?= $col['end'] ?></strong></dd>
+                        <?php if (isset($descriptions[$col['title']])): ?>
+                            <dd><?= $this->clean($descriptions[$col['title']]) ?></dd>
+                        <?php endif ?>
+                    </dl>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="page-header">
+    <h1>Instructors</h1>
+</div>
+<?php if ($collection->count()): ?>
+    <div class="row">
+        <?php foreach ($collection as $item): ?>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <a href="<?= $this->url('instructor/' . $item->username) ?>"><img
+                            class="img-rounded" src="<?= $this->url($item->username . '.jpg', 'image') ?>"
+                            alt="<?= $this->clean($item->title . ' ' . $item->name) ?>"/></a>
+
+                    <div class="caption">
+                        <h4>
+                            <a href="<?= $this->url('instructor/' . $item->username) ?>"><?= $this->clean($item->title . ' ' . $item->name) ?></a>
+                        </h4>
+
+                        <p><?= $this->clean((new \PHY\Variable\Str(ucfirst($item->bio)))->toShorten(256)) ?></p>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>
+<?php else: ?>
+    <p>No instructors are listed yet. Hold on while we get them in.</p>
+<?php endif ?>

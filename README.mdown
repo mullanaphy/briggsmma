@@ -1,0 +1,32 @@
+Briggs MMA
+================================================================================
+
+
+Site for my good friend Jesse and his BJJ/MMA gym in El Paso, TX. Definitely
+check it out if you're in the area, he's an amazing instructor.
+
+http://www.briggsmma.com/
+
+Requirements
+------------
+
+- PHP 5.4+
+- PHY\Phyneapple
+
+Submitting bugs and feature requests
+------------------------------------
+
+Please send bugs to me via
+[GitHub](https://github.com/mullanaphy/briggsmma/issues)
+
+Author
+------
+
+John Mullanaphy - <john@jo.mu> - <http://jo.mu/>
+That's it for now...
+
+License
+-------
+
+Source code for Briggs MMA is licensed under the Open Software License (OSL 3.0) -
+see the `LICENSE` file for details

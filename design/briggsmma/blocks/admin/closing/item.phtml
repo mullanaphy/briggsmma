@@ -1,0 +1,100 @@
+<?php
+    /**
+     * Phyneapple!
+     *
+     * LICENSE
+     *
+     * This source file is subject to the Open Software License (OSL 3.0)
+     * that is bundled with this package in the file LICENSE.txt.
+     * It is also available through the world-wide-web at this URL:
+     * http://opensource.org/licenses/osl-3.0.php
+     * If you did not receive a copy of the license and are unable to
+     * obtain it through the world-wide-web, please send an email
+     * to license@phyneapple.com so we can send you a copy immediately.
+     *
+     * @package PHY
+     * @category PHY\Phyneapple
+     * @copyright Copyright (c) 2013 Phyneapple! (http://www.phyneapple.com/)
+     * @license http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+     * @author John Mullanaphy <john@jo.mu>
+     *
+     * @var $this \PHY\View\Block
+     * @var $item \PHY\Model\Closing
+     */
+?>
+<form action="<?= $_SERVER['REQUEST_URI'] ?>" class="form" method="post">
+    <?php if (!$item->date):
+        $month = '01';
+        $day = '01';
+        $year = date('Y'); else:
+        list($year, $month, $day) = explode('-', $item->date);
+    endif?>
+    <?php
+        $months = [
+            '01' => 'January',
+            '02' => 'February',
+            '03' => 'March',
+            '04' => 'April',
+            '05' => 'May',
+            '06' => 'June',
+            '07' => 'July',
+            '08' => 'August',
+            '09' => 'September',
+            '10' => 'October',
+            '11' => 'November',
+            '12' => 'December',
+        ]?>
+    <?= $this->child('message'); ?>
+    <div class="form-group">
+        <label for="closing-title" class="control-label">Title</label>
+        <input id="closing-title" class="form-control" name="closing[title]" type="text"
+               value="<?= $this->clean($item->title) ?>"/>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-sm-5 col-lg-5">
+            <div class="form-group">
+                <label for="closing-month" class="control-label">Day</label>
+                <select class="form-control" id="closing-month" name="closing[month]">
+                    <?php foreach ($months as $key => $month): ?>
+                        <option
+                            value="<?= $this->clean($key) ?>"<?php if ($month == $key): ?> selected="selected"<?php endif ?>><?= $this->clean($month) ?></option>
+                    <?php endforeach ?>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-3 col-lg-3">
+            <div class="form-group">
+                <label for="closing-day" class="control-label">Day</label>
+                <select class="form-control" id="schedule-day" name="closing[day]">
+                    <?php for ($i = 1; $i <= 31; ++$i): ?>
+                        <?php if ($i < 10): $i = '0' . $i; endif; ?>
+                        <option
+                            value="<?= $this->clean($i) ?>"<?php if ($day == $i): ?> selected="selected"<?php endif ?>><?= $this->clean($i) ?></option>
+                    <?php endfor ?>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-4 col-lg-4">
+            <div class="form-group">
+                <label for="closing-year" class="control-label">Year</label>
+                <select class="form-control" id="closing-year" name="closing[year]">
+                    <?php for ($start = date('Y') - 5, $end = date('Y') + 20; $start < $end; ++$start): ?>
+                        <option
+                            value="<?= $this->clean($start) ?>"<?php if ($year == $start): ?> selected="selected"<?php endif ?>><?= $this->clean($start) ?></option>
+                    <?php endfor ?>
+                </select>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="form-group">
+        <label for="closing-reason" class="control-label">Reason</label>
+        <textarea class="form-control" id="closing-reason" name="closing[reason]" rows="7"
+                  cols="30"><?= $this->clean($item->reason) ?></textarea>
+    </div>
+    <hr/>
+    <div class="form-group">
+        <button class="btn btn-primary">Save</button>
+    </div>
+</form>

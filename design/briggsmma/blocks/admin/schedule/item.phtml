@@ -1,0 +1,118 @@
+<?php
+    /**
+     * Phyneapple!
+     *
+     * LICENSE
+     *
+     * This source file is subject to the Open Software License (OSL 3.0)
+     * that is bundled with this package in the file LICENSE.txt.
+     * It is also available through the world-wide-web at this URL:
+     * http://opensource.org/licenses/osl-3.0.php
+     * If you did not receive a copy of the license and are unable to
+     * obtain it through the world-wide-web, please send an email
+     * to license@phyneapple.com so we can send you a copy immediately.
+     *
+     * @package PHY
+     * @category PHY\Phyneapple
+     * @copyright Copyright (c) 2013 Phyneapple! (http://www.phyneapple.com/)
+     * @license http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+     * @author John Mullanaphy <john@jo.mu>
+     *
+     * @var $this \PHY\View\Block
+     * @var $item \PHY\Model\Schedule
+     */
+?>
+<form action="<?= $_SERVER['REQUEST_URI'] ?>" class="form" method="post">
+    <?php $days = \PHY\Model\Schedule::getDays() ?>
+    <?php $types = [
+        ['type' => 'bjj', 'label' => 'BJJ'],
+        ['type' => 'striking', 'label' => 'Striking'],
+        ['type' => 'muay-thai', 'label' => 'Muay Thai'],
+        ['type' => 'boxing', 'label' => 'Boxing'],
+        ['type' => 'judo', 'label' => 'Judo'],
+        ['type' => 'dodgeball', 'label' => 'Dodgeball']
+    ] ?>
+    <?php $levels = [
+        ['type' => 'all', 'label' => 'All'],
+        ['type' => 'kids', 'label' => 'Kids'],
+        ['type' => 'adults', 'label' => 'Adults'],
+        ['type' => 'teens', 'label' => 'Teens'],
+        ['type' => 'beginner', 'label' => 'Beginner'],
+        ['type' => 'advanced', 'label' => 'Advanced'],
+        ['type' => 'expert', 'label' => 'Expert']
+    ] ?>
+    <?= $this->child('message'); ?>
+    <div class="form-group">
+        <label for="schedule-title" class="control-label">Title</label>
+        <input id="schedule-title" class="form-control" name="schedule[title]" type="text" value="<?= $this->clean($item->title) ?>" />
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-sm-6 col-lg-6">
+            <div class="form-group">
+                <label for="schedule-type" class="control-label">Type</label>
+                <select class="form-control" id="schedule-type" name="schedule[type]">
+                    <?php foreach ($types as $type): ?>
+                    <option
+                        value="<?= $type['type'] ?>"<?php if ($type['type'] == $item->type): ?> selected="selected"<?php endif ?>><?= $this->clean($type['label']) ?></option>
+                    <?php endforeach ?>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-6">
+            <div class="form-group">
+                <label for="schedule-level" class="control-label">Level</label>
+                <select class="form-control" id="schedule-level" name="schedule[level]">
+                    <?php foreach ($levels as $level): ?>
+                    <option
+                        value="<?= $level['type'] ?>"<?php if ($level['type'] == $item->level): ?> selected="selected"<?php endif ?>><?= $this->clean($level['label']) ?></option>
+                    <?php endforeach ?>
+                </select>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-sm-4 col-lg-4">
+            <div class="form-group">
+                <label for="schedule-day" class="control-label">Day</label>
+                <select class="form-control" id="schedule-day" name="schedule[day]">
+                    <?php for ($i = 0, $count = count($days); $i < $count; ++$i): ?>
+                        <option
+                            value="<?= $i ?>"<?php if ($i == $item->day): ?> selected="selected"<?php endif ?>><?= $this->clean($days[$i]) ?></option>
+                    <?php endfor ?>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-4 col-lg-4">
+            <div class="form-group">
+                <label for="schedule-start" class="control-label">Starts</label>
+                <select class="form-control" id="schedule-start" name="schedule[start]">
+                    <?php for ($i = 0; $i < 24; $i += .25): ?>
+                        <option
+                            value="<?= $i ?>"<?php if ($i == $item->start): ?> selected="selected"<?php endif ?>><?php if ($i >= 12): ?><?= (int)$i - 12?:12 ?>:<?php $minutes = ($i - (int)$i) * 60;
+                                if ($minutes): echo $minutes; else: echo '00'; endif ?>pm<?php else: ?><?= (int)$i?:12 ?>:<?php $minutes = ($i - (int)$i) * 60;
+                                if ($minutes): echo $minutes; else: echo '00'; endif ?>am<?php endif ?></option>
+                    <?php endfor ?>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-4 col-lg-4">
+            <div class="form-group">
+                <label for="schedule-end" class="control-label">Ends</label>
+                <select class="form-control" id="schedule-end" name="schedule[end]">
+                    <?php for ($i = 0; $i < 24; $i += .25): ?>
+                        <option
+                            value="<?= $i + .25 ?>"<?php if ($i == $item->end + .25): ?> selected="selected"<?php endif ?>><?php if ($i >= 12): ?><?= (int)$i - 12?:12 ?>:<?php $minutes = ($i - (int)$i) * 60;
+                                if ($minutes): echo $minutes; else: echo '00'; endif ?>pm<?php else: ?><?= (int)$i ?>:<?php $minutes = ($i - (int)$i) * 60;
+                                if ($minutes): echo $minutes; else: echo '00'; endif ?>am<?php endif ?></option>
+                    <?php endfor ?>
+                </select>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="form-group">
+        <button class="btn btn-primary">Save</button>
+    </div>
+</form>

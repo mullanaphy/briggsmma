@@ -1,0 +1,33 @@
+<div class="thumbnail">
+    <div id="sidebar-location" style="height:200px;"></div>
+    <div class="caption">
+        <address>
+            <strong>Address:</strong> <a
+                href="https://www.google.com/maps/preview?q=811+Southwestern+Drive+Suite+E,+El+Paso,+TX+79912&ie=UTF-8&hq=&hnear=0x86ddf8e41762348b:0xe572944f6b10bcc,811+Southwestern+Dr,+El+Paso,+TX+79912&gl=us&daddr=811+Southwestern+Dr,+El+Paso,+TX+79912&ei=L5jRU6zoC6jLsATY7IG4Bw&ved=0CB0QwwUwAA"><?= $address ?></a><br/>
+            <strong>Phone:</strong> <a href="tel:<?= $phone ?>"><?= $phone ?></a><br/>
+            <strong>Email:</strong> <a href="mailto:<?= $email ?>"><?= $email ?></a>
+        </address>
+    </div>
+</div>
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASLnXjzvO3m1OOs7SN9DxuCckiOlHkl5Y&sensor=true"></script>
+<script type="text/javascript">
+    google.maps.event.addDomListener(window, 'load', function() {
+        var e = document.getElementById('sidebar-location');
+        var g = new google.maps.Geocoder();
+        g.geocode({address: '<?= $address ?>', region: 'us'}, function(r, s) {
+            if (s === google.maps.GeocoderStatus.OK) {
+                var l = new google.maps.LatLng(r[0].geometry.location.lat(), r[0].geometry.location.lng());
+                var m = new google.maps.Map(e, {
+                    center: l,
+                    zoom: 13
+                });
+                new google.maps.Marker({
+                    position: l,
+                    map: m,
+                    title: 'Briggs MMA'
+                });
+            }
+        });
+    });
+</script>

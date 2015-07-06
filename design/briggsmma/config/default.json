@@ -1,0 +1,69 @@
+{
+    "layout": {
+        "template": "core/layout-2col.phtml",
+        "children": {
+            "head": {
+                "title": "Briggs Academy of Mixed Martial Arts",
+                "viewClass": "head",
+                "files": {
+                    "css": [
+                        "bootstrap.min.css",
+                        "core.css"
+                    ]
+                }
+            },
+            "header": {
+                "template": "core/sections/header.phtml",
+                "title": "Briggs Academy of Mixed Martial Arts",
+                "children": {
+                    "menu": {
+                        "viewClass": "header/menu",
+                        "links": {
+                            "instructors": {
+                                "title": "Instructors",
+                                "url": "instructor"
+                            },
+                            "schedule": {
+                                "title": "Schedule",
+                                "url": "schedule"
+                            },
+                            "testimonials": {
+                                "title": "Testimonials",
+                                "url": "testimonial"
+                            }
+                        }
+                    }
+
+                }
+            },
+            "sidebar": {
+                "viewClass": "items",
+                "children": {
+                    "sidebar/location": {
+                        "template": "sidebar/location.phtml",
+                        "viewClass": "sidebar/location"
+                    },
+                    "sidebar/facebook": {
+                        "template": "sidebar/facebook.phtml",
+                        "viewClass": "sidebar/facebook"
+                    }
+                }
+            },
+            "footer": {
+                "viewClass": "footer",
+                "copyright": "&copy; Briggs Academy of Mixed Martial Arts 2014",
+                "files": {
+                    "js": [
+                        "bootstrap.min.js"
+                    ]
+                }
+            },
+            "content": {
+                "viewClass": "parser"
+            },
+            "modal": {
+                "template": "generic/modal.phtml"
+            }
+        }
+    }
+}
