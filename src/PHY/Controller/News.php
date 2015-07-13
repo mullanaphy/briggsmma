@@ -59,7 +59,7 @@
                 if (!$item->exists()) {
                     return $this->redirect('/news');
                 }
-                $head->setVariable('title', $item->title . '| Gym News');
+                $head->setVariable('title', $item->title);
 
                 $content->setTemplate('news/view.phtml');
                 $content->setVariable('item', $item);
