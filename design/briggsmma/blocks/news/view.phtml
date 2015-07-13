@@ -1,9 +1,8 @@
 <div class="page-header">
-    <h1><a href="<?= $this->url('news') ?>">Gym News</a> &raquo; <?= $this->clean($item->title) ?>
-        <small>
-            <time
-                datetime="<?= date('Y-m-d\TH:i:sa', strtotime($item->created)) ?>"><?= date('F j, Y', strtotime($item->created)) ?></time>
-        </small>
-    </h1>
+    <h1><?= $this->clean($item->title) ?></h1>
+    <strong>
+        <time
+            datetime="<?= date('Y-m-d\TH:i:sa', strtotime($item->created)) ?>"><?= date('F j, Y', strtotime($item->created)) ?></time>
+    </strong>
 </div>
 <?= $content ?>

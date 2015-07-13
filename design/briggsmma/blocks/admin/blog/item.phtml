@@ -23,6 +23,7 @@
      */
 ?>
 <form action="<?= $_SERVER['REQUEST_URI'] ?>" class="form" method="post">
+    <?= $this->getXsrfIdField() ?>
     <?= $this->child('message'); ?>
     <div class="form-group">
         <label for="blog-title" class="control-label">Title</label>

@@ -40,9 +40,14 @@
                                 $path = $path[2]; else:
                                 $path = false;
                             endif ?>
-                        <?php if ($path === 'testimonial'): ?>
-                            <li><a href="<?= $this->url('admin/testimonial') ?>"><strong>Testimonials</strong></a>
+                        <?php if ($path === 'blog'): ?>
+                            <li><a href="<?= $this->url('admin/blog') ?>"><strong>News</strong></a>
                             </li>
+                        <?php else: ?>
+                            <li><a href="<?= $this->url('admin/blog') ?>">News</a></li>
+                        <?php endif ?>
+                        <?php if ($path === 'testimonial'): ?>
+                            <li><a href="<?= $this->url('admin/testimonial') ?>"><strong>Testimonials</strong></a></li>
                         <?php else: ?>
                             <li><a href="<?= $this->url('admin/testimonial') ?>">Testimonials</a></li>
                         <?php endif ?>
@@ -67,8 +72,7 @@
                             <li><a href="<?= $this->url('admin/config') ?>">Settings</a></li>
                         <?php endif ?>
                         <?php if ($path === 'authorize'): ?>
-                            <li><a href="<?= $this->url('admin/authorize') ?>"><strong>Access Control List</strong></a>
-                            </li>
+                            <li><a href="<?= $this->url('admin/authorize') ?>"><strong>Access Control List</strong></a></li>
                         <?php else: ?>
                             <li><a href="<?= $this->url('admin/authorize') ?>">Access Control List</a></li>
                         <?php endif ?>

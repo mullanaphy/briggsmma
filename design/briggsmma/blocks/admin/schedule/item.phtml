@@ -23,6 +23,7 @@
      */
 ?>
 <form action="<?= $_SERVER['REQUEST_URI'] ?>" class="form" method="post">
+    <?= $this->getXsrfIdField() ?>
     <?php $days = \PHY\Model\Schedule::getDays() ?>
     <?php $types = [
         ['type' => 'bjj', 'label' => 'BJJ'],

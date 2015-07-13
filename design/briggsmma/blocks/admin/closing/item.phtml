@@ -23,6 +23,7 @@
      */
 ?>
 <form action="<?= $_SERVER['REQUEST_URI'] ?>" class="form" method="post">
+    <?= $this->getXsrfIdField() ?>
     <?php if (!$item->date):
         $month = '01';
         $day = '01';

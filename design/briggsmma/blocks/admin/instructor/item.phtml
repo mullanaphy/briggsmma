@@ -23,6 +23,7 @@
      */
 ?>
 <form action="<?= $_SERVER['REQUEST_URI'] ?>" class="form" method="post">
+    <?= $this->getXsrfIdField() ?>
     <?= $this->child('message'); ?>
     <div class="row">
         <div class="col-sm-6 col-lg-6">

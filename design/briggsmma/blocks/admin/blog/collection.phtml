@@ -24,7 +24,7 @@
 ?>
 <?php $tag = $this->tag() ?>
 <?php $i = 0; ?>
-    <?= $this->child('message') ?>
+<?= $this->child('message') ?>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -55,17 +55,17 @@
                                     'type' => 'confirm',
                                     'element' => '.blog-' . $item->id()
                                 ]
-                            ])?>
+                            ]) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
             <tr>
-                <td colspan="4">No articles have been posted yet. <a href="<?= $this->url('admin/blog/id/0') ?>"
-                                                                     class="btn btn-sm btn-primary">Add</a>
+                <td colspan="4">No posts yet. <a href="<?= $this->url('admin/blog/id/0') ?>"
+                                                 class="btn btn-sm btn-primary">Add</a>
                 </td>
             </tr>
         <?php endif ?>
         </tbody>
     </table>
-    <?= $this->child('pagination') ?>
+<?= $this->child('pagination') ?>

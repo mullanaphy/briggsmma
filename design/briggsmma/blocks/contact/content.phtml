@@ -7,6 +7,7 @@
     </div>
     <div class="col-sm-6">
         <form action="<?= $this->url('contact') ?>" method="post" role="form">
+            <?= $this->getXsrfIdField() ?>
             <?= $this->child('contact/message') ?>
             <div class="form-group">
                 <label for="contact-name" class="control-label">Your Name</label>
