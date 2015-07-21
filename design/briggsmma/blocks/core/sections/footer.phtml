@@ -31,14 +31,24 @@
         <li><a href="<?= $this->url('contact') ?>">Contact</a></li>
         <li><a href="https://www.facebook.com/briggsmma">Facebook</a></li>
     </ul>
-    <ul class="list-inline pull-right">
-        <li><img alt="Drysdale BJJ"
-                 src="<?= $this->url('zenith.jpg', 'image') ?>"/>
-        </li>
-        <li><a href="http://www.drysdalebjj.com/" rel="nofollow"><img alt="Drysdale BJJ"
-                                                                      src="<?= $this->url('drysdale.jpg', 'image') ?>"/></a>
-        </li>
-    </ul>
+    <div class="pull-right">
+        <ul class="list-inline">
+            <li><img alt="Zenith"
+                     src="<?= $this->url('zenith.jpg', 'image') ?>"/>
+            </li>
+            <li><img alt="CSW Combat Submission Wrestling"
+                     src="<?= $this->url('csw.jpg', 'image') ?>"/>
+            </li>
+            <li><a href="http://www.drysdalebjj.com/" rel="nofollow"><img alt="Drysdale BJJ"
+                                                                          src="<?= $this->url('drysdale.jpg', 'image') ?>"/></a>
+            </li>
+        </ul>
+        <ul class="list-inline">
+            <li><img alt="STX Kickboxing"
+                     src="<?= $this->url('stx.jpg', 'image') ?>"/>
+            </li>
+        </ul>
+    </div>
 </footer>
 <?php
     if (isset($js)):
