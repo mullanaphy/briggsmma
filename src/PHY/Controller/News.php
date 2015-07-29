@@ -78,6 +78,7 @@
 
                 /* @var \PHY\Model\User\Collection $collection */
                 $collection = $manager->getCollection('Blog');
+                $collection->order()->by('id')->direction('desc');
 
                 $content->setVariable('collection', $collection);
 
